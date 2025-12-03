@@ -4,7 +4,9 @@ This folder contains tutorials for working directly with the NDP-EP REST API.
 
 ## Contents
 
-*Coming soon*
+| Tutorial | Description |
+|----------|-------------|
+| [01 - Getting Started](./01-getting-started.md) | API overview, authentication, and basic operations |
 
 ## Prerequisites
 
