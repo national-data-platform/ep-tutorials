@@ -8,7 +8,6 @@ This folder contains tutorials for using the `ndp-ep` Python library.
 |----------|-------------|
 | [01 - Getting Started](./01-getting-started.md) | Installation, authentication, and basic operations |
 | [02 - S3 Integration](./02-s3-integration.md) | Bucket management, upload/download, presigned URLs |
-| 03 - Kafka Streaming | *Coming soon* |
 
 ## Prerequisites
 

@@ -208,7 +208,6 @@ client.delete_bucket('project-data')
 
 ## Next Steps
 
-- Learn about [Kafka streaming](./03-kafka-streaming.md) for real-time data
 - Check out the [complete examples](../examples/) for end-to-end workflows
 
 ## Related Resources

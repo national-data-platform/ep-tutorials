@@ -4,7 +4,7 @@ This folder contains tutorials for using the NDP-EP administrative console (ep-f
 
 ## Contents
 
-*Coming soon*
+*No tutorials yet*
 
 ## Prerequisites
 
