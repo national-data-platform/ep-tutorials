@@ -1,11 +1,11 @@
-# Getting Started with ndp-ep-py
+# Getting Started with ndp-ep
 
-This guide provides a quick introduction to the `ndp-ep-py` Python library for interacting with the NDP-EP API.
+This guide provides a quick introduction to the `ndp-ep` Python library for interacting with the NDP-EP API.
 
 ## Installation
 
 ```bash
-pip install ndp-ep-py
+pip install ndp-ep
 ```
 
 ## Quick Start
@@ -17,13 +17,13 @@ from ndp_ep import Client
 
 # Using token authentication
 client = Client(
-    api_url="https://your-api-endpoint.com",
+    base_url="https://your-api-endpoint.com",
     token="your-api-token"
 )
 
 # Or using username/password
 client = Client(
-    api_url="https://your-api-endpoint.com",
+    base_url="https://your-api-endpoint.com",
     username="your-username",
     password="your-password"
 )
@@ -36,21 +36,11 @@ client = Client(
 organizations = client.list_organizations()
 
 # Search datasets
-datasets = client.search_datasets(query="climate")
+datasets = client.search_datasets(terms=["climate"])
 
 # Get system status
-status = client.get_status()
+status = client.get_system_status()
 ```
-
-## Official Documentation
-
-For comprehensive tutorials and API reference, see the official ndp-ep-py documentation:
-
-| Resource | Description |
-|----------|-------------|
-| [Getting Started Tutorial](https://github.com/sci-ndp/ndp-ep-py/blob/main/docs/source/tutorials/getting_started.ipynb) | Complete walkthrough of basic operations |
-| [Bulk Resource Management](https://github.com/sci-ndp/ndp-ep-py/blob/main/docs/source/tutorials/bulk_resource_management.ipynb) | Managing multiple resources efficiently |
-| [API Reference](https://github.com/sci-ndp/ndp-ep-py#api-reference) | Complete list of available methods |
 
 ## Key Features
 
@@ -68,12 +58,10 @@ The library provides methods for:
 
 After getting familiar with the basics:
 
-1. Explore the [official tutorials](https://github.com/sci-ndp/ndp-ep-py/tree/main/docs/source/tutorials)
-2. Check out the [complete examples](../examples/) in this repository
-3. Learn about [S3 integration](./02-s3-integration.md) (coming soon)
-4. Explore [Kafka streaming](./03-kafka-streaming.md) (coming soon)
+1. Check out the [complete examples](../examples/) in this repository
+2. Learn about [S3 integration](./02-s3-integration.md) (coming soon)
+3. Explore [Kafka streaming](./03-kafka-streaming.md) (coming soon)
 
 ## Related Resources
 
 - [ndp-ep-py GitHub Repository](https://github.com/sci-ndp/ndp-ep-py)
-- [NDP-EP API Documentation](https://github.com/rbardaji/ndp-ep)
