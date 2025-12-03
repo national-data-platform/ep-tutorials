@@ -58,9 +58,8 @@ The library provides methods for:
 
 After getting familiar with the basics:
 
-1. Check out the [complete examples](../examples/) in this repository
-2. Learn about [S3 integration](./02-s3-integration.md) (coming soon)
-3. Explore [Kafka streaming](./03-kafka-streaming.md) (coming soon)
+1. Learn about [S3 integration](./02-s3-integration.md)
+2. Check out the [complete examples](../examples/) in this repository
 
 ## Related Resources
 

@@ -41,14 +41,6 @@ ep-tutorials/
 | [Frontend Tutorials](./frontend/) | Navigate and use the administrative console |
 | [Examples](./examples/) | End-to-end demo applications |
 
-## Planned Examples
-
-This repository will include tutorials inspired by real-world use cases:
-
-- **Geophysical Data Processing**: Real-time GPS data streaming and anomaly detection (EarthScope)
-- **Satellite Data Analysis**: Querying and visualizing satellite imagery (NOAA/GOES)
-- **Environmental Sensor Streaming**: Real-time sensor monitoring with Kafka (SAGE)
-
 ## Related Resources
 
 - [ndp-ep Python Library](https://github.com/sci-ndp/ndp-ep-py)
