@@ -1,6 +1,6 @@
 # Python Library Tutorials
 
-This folder contains tutorials for using the `ndp-ep-py` Python library.
+This folder contains tutorials for using the `ndp-ep` Python library.
 
 ## Contents
 
@@ -13,7 +13,7 @@ This folder contains tutorials for using the `ndp-ep-py` Python library.
 ## Prerequisites
 
 - Python 3.8+
-- ndp-ep-py library installed (`pip install ndp-ep-py`)
+- ndp-ep library installed (`pip install ndp-ep`)
 - Access to an NDP-EP API instance
 
 ## Topics Covered
