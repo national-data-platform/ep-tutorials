@@ -92,8 +92,8 @@ Register a new general dataset.
 
 ```python
 result = client.register_general_dataset({
-    "resource_name": "my-dataset",
-    "resource_title": "My Dataset Title",
+    "name": "my-dataset",
+    "title": "My Dataset Title",
     "owner_org": "my-organization",
     "notes": "Description of the dataset"
 })
@@ -131,6 +131,7 @@ result = client.register_s3_link({
     "owner_org": "my-organization",
     "s3_bucket": "my-bucket",
     "s3_key": "path/to/file.nc",
+    "resource_s3": "my-bucket/path/to/file.nc",
     "notes": "Data stored in S3"
 })
 print(result)
@@ -540,8 +541,8 @@ Get Kafka connection details.
 
 ```python
 kafka = client.get_kafka_details()
-print(f"Host: {kafka['host']}")
-print(f"Port: {kafka['port']}")
+print(f"Host: {kafka['kafka_host']}")
+print(f"Port: {kafka['kafka_port']}")
 ```
 
 ### register_kafka_topic(data, server='local')
@@ -654,7 +655,7 @@ Get JupyterLab connection details.
 
 ```python
 jupyter = client.get_jupyter_details()
-print(f"URL: {jupyter['url']}")
+print(f"URL: {jupyter['jupyter_url']}")
 ```
 
 ---
