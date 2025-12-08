@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarthScope GNSS Data: NDP-EP Benefits</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aptos:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Aptos', 'Segoe UI', Calibri, Arial, sans-serif;
+            background: #ffffff;
+            color: #333333;
+            min-height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            min-height: 100vh;
+            padding: 100px 40px 120px 40px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 200;
+        }
+
+        .header img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #001642;
+            color: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 200;
+            font-size: 0.75rem;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-left img {
+            height: 30px;
+            width: auto;
+        }
+
+        .footer-left img.nsf-logo {
+            height: 40px;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer a:hover {
+            opacity: 1;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            max-width: 400px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #8B4513;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #8B4513;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #666666;
+            margin-bottom: 40px;
+        }
+
+        .content {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Workflow diagrams */
+        .workflow {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .workflow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .workflow-box {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 20px 30px;
+            text-align: center;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .workflow-box:hover {
+            transform: scale(1.05);
+            border-color: #8B4513;
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.15);
+        }
+
+        .workflow-box.highlight {
+            background: #e8f5e9;
+            border-color: #28a745;
+        }
+
+        .workflow-box.warning {
+            background: #fff8e1;
+            border-color: #ffa000;
+        }
+
+        .workflow-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .workflow-box .label {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+
+        .workflow-box .value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #8B4513;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .compare-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid #dee2e6;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .compare-card.bad {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .compare-card.good {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .compare-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compare-card.bad h3 { color: #dc3545; }
+        .compare-card.good h3 { color: #28a745; }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #666666;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .stat-value.bad { color: #dc3545; }
+        .stat-value.good { color: #28a745; }
+
+        /* Benefits list */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .benefit-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            border-left: 4px solid #8B4513;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.15);
+        }
+
+        .benefit-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            color: #8B4513;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Progress bar animation */
+        .progress-demo {
+            margin: 40px 0;
+        }
+
+        .progress-item {
+            margin: 20px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 2s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .progress-fill.slow {
+            background: linear-gradient(90deg, #dc3545, #fd7e14);
+            width: 0;
+        }
+
+        .progress-fill.fast {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            width: 0;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav button {
+            background: #8B4513;
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Aptos', 'Segoe UI', Calibri, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav button:hover {
+            background: #6B3510;
+            transform: scale(1.05);
+        }
+
+        .nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            top: 85px;
+            right: 30px;
+            font-size: 1rem;
+            color: #999999;
+            font-weight: 500;
+        }
+
+        /* Station map styles */
+        .station-map {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .region-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .region-box:hover {
+            transform: scale(1.05);
+            border-color: #8B4513;
+        }
+
+        .region-box .count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8B4513;
+        }
+
+        .region-box .name {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Big number */
+        .big-number {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .big-label {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #666666;
+        }
+
+        /* Code block */
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border: 1px solid #dee2e6;
+        }
+
+        .code-comment {
+            color: #6c757d;
+        }
+
+        .code-keyword {
+            color: #d63384;
+        }
+
+        .code-string {
+            color: #198754;
+        }
+
+        .code-text {
+            color: #333333;
+        }
+
+        /* Tech item */
+        .tech-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px 30px;
+            text-align: center;
+            border: 2px solid #dee2e6;
+            min-width: 120px;
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: #8B4513;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
+        }
+
+        .tech-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .comparison { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .workflow-row { flex-direction: column; }
+            .arrow { transform: rotate(90deg); }
+            .station-map { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://nationaldataplatform.org/National_Data_Platform_horiz_stacked.svg" alt="National Data Platform">
+    </div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide active" id="slide1">
+        <h1 style="font-size: 2.5rem;">EarthScope GNSS Data</h1>
+        <p class="subtitle">Seismic Station Network Analysis with NDP-EP</p>
+        <div style="margin-top: 40px; text-align: center;">
+            <div style="font-size: 5rem; margin-bottom: 20px;">🌍📡</div>
+            <p style="font-size: 1.3rem; color: #8B4513; margin-bottom: 20px;">1,100+ GNSS Stations Across the US</p>
+            <p style="color: #666666;">Real-time Ground Motion Monitoring</p>
+        </div>
+        <div style="margin-top: 60px;">
+            <p style="color: #999999;">Press <kbd style="background: #e9ecef; padding: 5px 10px; border-radius: 5px; border: 1px solid #dee2e6;">Next</kbd> or use arrow keys</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Case Study -->
+    <div class="slide" id="slide2">
+        <div class="content">
+            <h1>Case Study</h1>
+            <p class="subtitle" style="text-align: center;">EarthScope GNSS Station Analysis</p>
+
+            <div style="display: flex; gap: 40px; margin: 40px 0; align-items: center; justify-content: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px; max-width: 500px;">
+                    <h2 style="margin-bottom: 20px;">Scientific Goal</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #444;">
+                        Analyze the <strong>EarthScope GNSS station network</strong> to understand coverage and characteristics by US region:
+                    </p>
+                    <ul style="margin-top: 20px; line-height: 2; color: #555;">
+                        <li>Station distribution by region</li>
+                        <li>Network affiliations (NOTA, IGS, etc.)</li>
+                        <li>Elevation statistics</li>
+                        <li>Active vs inactive stations</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 300px; max-width: 400px; text-align: center;">
+                    <div style="background: #fff8e1; border: 2px solid #8B4513; border-radius: 16px; padding: 30px;">
+                        <div style="font-size: 4rem; margin-bottom: 15px;">📡</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #8B4513;">EarthScope Consortium</div>
+                        <div style="color: #666; margin-top: 10px;">High-rate GNSS (1Hz)</div>
+                        <div style="color: #666;">Position Time Series</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 12px; padding: 15px 25px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #8B4513;">1,100+</div>
+                    <div style="color: #666; font-size: 0.85rem;">Stations</div>
+                </div>
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 12px; padding: 15px 25px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #8B4513;">1 Hz</div>
+                    <div style="color: #666; font-size: 0.85rem;">Sample Rate</div>
+                </div>
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 12px; padding: 15px 25px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #8B4513;">Real-time</div>
+                    <div style="color: #666; font-size: 0.85rem;">Streaming</div>
+                </div>
+                <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 12px; padding: 15px 25px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #8B4513;">3D</div>
+                    <div style="color: #666; font-size: 0.85rem;">X, Y, Z Position</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Problem -->
+    <div class="slide" id="slide3">
+        <div class="content">
+            <h1>The Problem</h1>
+            <p class="subtitle" style="text-align: center;">Raw data requires cleaning and processing</p>
+
+            <div class="workflow">
+                <div class="workflow-row">
+                    <div class="workflow-box warning">
+                        <div class="icon">📄</div>
+                        <div>Raw CSV</div>
+                        <div class="value" style="color: #dc3545;">150 KB</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box warning">
+                        <div class="icon">🔧</div>
+                        <div>Fix Headers</div>
+                        <div class="label">Malformed</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box warning">
+                        <div class="icon">🧹</div>
+                        <div>Clean Data</div>
+                        <div class="label">Parse 1100 rows</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box warning">
+                        <div class="icon">📊</div>
+                        <div>Aggregate</div>
+                        <div class="label">By region</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #fff5f5; border-radius: 16px; border: 1px solid #dc3545;">
+                <p style="font-size: 1.3rem; color: #dc3545;">Every researcher repeats the same data cleaning</p>
+                <p style="color: #666666; margin-top: 10px;">Raw CSV has malformed headers, requires custom parsing</p>
+            </div>
+
+            <div style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.9rem; overflow-x: auto;">
+                <div style="color: #6c757d;">// Raw CSV header (malformed):</div>
+                <div style="color: #dc3545;">Site,Latitude,(deg),Longitude,(deg),EllipElev,(m),X,(m),Y,(m),Z,(m)...</div>
+                <div style="color: #6c757d; margin-top: 10px;">// Units mixed with column names!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: The Solution -->
+    <div class="slide" id="slide4">
+        <div class="content">
+            <h1>The Solution: NDP-EP</h1>
+            <p class="subtitle" style="text-align: center;">Process once, share clean data with everyone</p>
+
+            <div class="workflow">
+                <p style="text-align: center; color: #ffa000; font-weight: 600; margin-bottom: 20px;">👤 First User (One Time)</p>
+                <div class="workflow-row">
+                    <div class="workflow-box">
+                        <div class="icon">📄</div>
+                        <div>Raw CSV</div>
+                        <div class="label">150 KB</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box">
+                        <div class="icon">🧹</div>
+                        <div>Clean & Parse</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box">
+                        <div class="icon">📊</div>
+                        <div>Aggregate</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box highlight">
+                        <div class="icon">📤</div>
+                        <div>Upload JSON</div>
+                        <div class="value" style="color: #28a745;">7.5 KB</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow" style="margin-top: 40px;">
+                <p style="text-align: center; color: #28a745; font-weight: 600; margin-bottom: 20px;">👥 All Other Users (Forever)</p>
+                <div class="workflow-row">
+                    <div class="workflow-box highlight">
+                        <div class="icon">🔍</div>
+                        <div>Search</div>
+                        <div class="label">0.06s</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box highlight">
+                        <div class="icon">⬇️</div>
+                        <div>Download</div>
+                        <div class="value" style="color: #28a745;">7.5 KB</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="workflow-box highlight">
+                        <div class="icon">📊</div>
+                        <div>Analyze</div>
+                        <div class="label">Ready!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Comparison -->
+    <div class="slide" id="slide5">
+        <div class="content">
+            <h1>Real Results</h1>
+            <p class="subtitle" style="text-align: center;">EarthScope GNSS Station Data Processing</p>
+
+            <div class="comparison">
+                <div class="compare-card bad">
+                    <h3>❌ Without NDP-EP</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Download Size</span>
+                        <span class="stat-value bad">149.5 KB</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Time</span>
+                        <span class="stat-value bad">~2 seconds</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Data Cleaning</span>
+                        <span class="stat-value bad">Required</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Processing</span>
+                        <span class="stat-value bad">Required</span>
+                    </div>
+                </div>
+
+                <div class="compare-card good">
+                    <h3>✓ With NDP-EP</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Download Size</span>
+                        <span class="stat-value good">7.5 KB</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Time</span>
+                        <span class="stat-value good">~0.14 seconds</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Data Cleaning</span>
+                        <span class="stat-value good">Already done</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Processing</span>
+                        <span class="stat-value good">Already done</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 60px; margin-top: 40px;">
+                <div style="text-align: center;">
+                    <div class="big-number">93%</div>
+                    <div class="big-label">Faster</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="big-number">95%</div>
+                    <div class="big-label">Less Data</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Processed Data -->
+    <div class="slide" id="slide6">
+        <div class="content">
+            <h1>Processed Data Structure</h1>
+            <p class="subtitle" style="text-align: center;">Clean, aggregated, ready to use</p>
+
+            <div style="display: flex; gap: 40px; margin: 30px 0; flex-wrap: wrap; justify-content: center;">
+                <div style="flex: 1; min-width: 300px; max-width: 500px;">
+                    <h2 style="margin-bottom: 20px;">Regions</h2>
+                    <div class="station-map" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="region-box" style="border-color: #dc3545;">
+                            <div class="count" style="color: #dc3545;">🔴</div>
+                            <div class="name">California</div>
+                        </div>
+                        <div class="region-box" style="border-color: #0066cc;">
+                            <div class="count" style="color: #0066cc;">🔵</div>
+                            <div class="name">Pacific NW</div>
+                        </div>
+                        <div class="region-box" style="border-color: #fd7e14;">
+                            <div class="count" style="color: #fd7e14;">🟠</div>
+                            <div class="name">Southwest</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="flex: 1; min-width: 300px; max-width: 400px;">
+                    <h2 style="margin-bottom: 20px;">Per Region Data</h2>
+                    <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; font-family: monospace; font-size: 0.85rem;">
+                        <div style="color: #6c757d;">// JSON structure:</div>
+                        <div>{</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">station_count</span>": 450,</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">active_count</span>": 445,</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">networks</span>": ["NOTA", "IGS"...],</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">avg_elevation_m</span>": 892.5,</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">center_lat</span>": 36.2,</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">center_lon</span>": -119.8,</div>
+                        <div style="padding-left: 20px;">"<span style="color: #0066cc;">sample_stations</span>": [...]</div>
+                        <div>}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; padding: 25px; background: #e8f5e9; border-radius: 16px; border: 1px solid #28a745;">
+                <p style="font-size: 1.2rem; color: #333333;">No parsing required - JSON is ready for visualization</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Key Benefits -->
+    <div class="slide" id="slide7">
+        <div class="content">
+            <h1>Key Benefits</h1>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">🧹</div>
+                    <h3>No Data Cleaning</h3>
+                    <p>Raw CSV has malformed headers. With NDP-EP, data is already cleaned and properly structured.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">📊</div>
+                    <h3>Pre-Aggregated</h3>
+                    <p>Statistics by region already calculated. No need to process 1,100+ station records.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">⚡</div>
+                    <h3>95% Smaller</h3>
+                    <p>7.5 KB JSON vs 150 KB raw CSV. Only download what you need.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🔍</div>
+                    <h3>Discoverable</h3>
+                    <p>Search the catalog. Find processed data without knowing the original source.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Demo -->
+    <div class="slide" id="slide8">
+        <div class="content">
+            <h1>Live Comparison</h1>
+            <p class="subtitle" style="text-align: center;">Download & Processing Time</p>
+
+            <div class="progress-demo">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Without NDP-EP (Download + Clean + Process)</span>
+                        <span style="color: #dc3545;">149.5 KB / ~2 sec</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill slow" id="progressSlow"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>With NDP-EP (Download Ready JSON)</span>
+                        <span style="color: #28a745;">7.5 KB / 0.14 sec</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fast" id="progressFast"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="runDemo()" style="background: #8B4513; border: none; color: white; padding: 15px 40px; font-size: 1.2rem; font-family: 'Aptos', sans-serif; font-weight: 500; border-radius: 30px; cursor: pointer;">
+                    ▶ Run Demo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Get Started -->
+    <div class="slide" id="slide9">
+        <div class="content">
+            <h1>Get Started</h1>
+
+            <div class="code-block">
+                <div class="code-comment"># Search for EarthScope data</div>
+                <div><span class="code-text">results = client.search_datasets(terms=[</span><span class="code-string">"earthscope"</span><span class="code-text">, </span><span class="code-string">"stations"</span><span class="code-text">])</span></div>
+                <br>
+                <div class="code-comment"># Download processed JSON</div>
+                <div><span class="code-text">data = client.download_object(</span><span class="code-string">"seismic-data"</span><span class="code-text">, </span><span class="code-string">"earthscope/stations_by_region.json"</span><span class="code-text">)</span></div>
+                <br>
+                <div class="code-comment"># Ready to analyze!</div>
+                <div><span class="code-text">regions = json.loads(data)[</span><span class="code-string">"regions"</span><span class="code-text">]</span></div>
+                <div><span class="code-keyword">for</span> <span class="code-text">region, stats</span> <span class="code-keyword">in</span> <span class="code-text">regions.items():</span></div>
+                <div><span class="code-text">    print(f</span><span class="code-string">"{region}: {stats['station_count']} stations"</span><span class="code-text">)</span></div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+                <a href="https://github.com/national-data-platform/ep-tutorials/blob/main/examples/earthscope-seismic-streaming.ipynb" target="_blank" style="text-decoration: none;">
+                    <div class="tech-item" style="cursor: pointer;">
+                        <div class="icon">📓</div>
+                        <div>Try the Notebook</div>
+                    </div>
+                </a>
+                <a href="https://www.earthscope.org/" target="_blank" style="text-decoration: none;">
+                    <div class="tech-item" style="cursor: pointer;">
+                        <div class="icon">🌍</div>
+                        <div>EarthScope</div>
+                    </div>
+                </a>
+                <a href="https://github.com/sci-ndp/ndp-ep-py" target="_blank" style="text-decoration: none;">
+                    <div class="tech-item" style="cursor: pointer;">
+                        <div class="icon">📦</div>
+                        <div>NDP-EP Python</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <div class="slide-indicator">
+        <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-left">
+            <img src="https://nationaldataplatform.org/National_Data_Platform_horiz_stacked_wt.svg" alt="NDP">
+            <img class="nsf-logo" src="https://nationaldataplatform.org/nsf-logo.png" alt="NSF">
+            <img src="https://sci.utah.edu/wp-content/uploads/2025/05/sci2024-wt.png" alt="SCI Institute" style="height: 35px;">
+            <img src="https://templates.utah.edu/_main-v3-1/images/template/university-of-utah-logo.svg" alt="University of Utah" style="height: 30px; filter: brightness(0) invert(1);">
+            <a href="mailto:ndp@sdsc.edu">ndp@sdsc.edu</a>
+        </div>
+        <div class="footer-right">
+            <span class="footer-text">Funded by NSF 2333609 under CI, CISE Research Resources programs</span>
+            <div class="social-links">
+                <a href="https://www.instagram.com/national_data_platform/" target="_blank" title="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://twitter.com/NatlDataPlatfrm" target="_blank" title="Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/national-data-platform/" target="_blank" title="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 9;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+
+            document.getElementById('currentSlide').textContent = currentSlide;
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+
+            // Reset demo on slide 8
+            if (currentSlide === 8) {
+                document.getElementById('progressSlow').style.width = '0';
+                document.getElementById('progressFast').style.width = '0';
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+
+        function runDemo() {
+            const slow = document.getElementById('progressSlow');
+            const fast = document.getElementById('progressFast');
+
+            slow.style.width = '0';
+            fast.style.width = '0';
+
+            setTimeout(() => {
+                slow.style.transition = 'width 2s linear';
+                slow.style.width = '100%';
+
+                fast.style.transition = 'width 0.14s linear';
+                fast.style.width = '100%';
+            }, 100);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
