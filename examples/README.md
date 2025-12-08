@@ -7,6 +7,14 @@ This folder contains end-to-end example applications demonstrating NDP-EP capabi
 | Example | Description |
 |---------|-------------|
 | [GOES-18 Utah Satellite](./goes-utah-satellite.ipynb) | Process GOES-18 satellite imagery for Utah region with interactive Folium visualization |
+| [EarthScope Seismic Streaming](./earthscope-seismic-streaming.ipynb) | Process EarthScope GNSS station data with regional aggregation |
+
+## Presentations
+
+| Presentation | Description |
+|--------------|-------------|
+| [GOES-18 Presentation](https://national-data-platform.github.io/ep-tutorials/examples/goes-presentation.html) | Interactive presentation on NDP-EP benefits using GOES-18 satellite data |
+| [EarthScope Presentation](https://national-data-platform.github.io/ep-tutorials/examples/earthscope-presentation.html) | Interactive presentation on NDP-EP benefits using EarthScope GNSS data |
 
 ## Running Examples
 
